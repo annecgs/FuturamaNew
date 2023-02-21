@@ -1,6 +1,6 @@
 package com.example.futurama.data.dto
 
-data class futuramaCharactersItem(
+data class FuturamaCharactersItem(
     val age: String,
     val gender: String,
     val homePlanet: String,
