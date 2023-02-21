@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1e1e1e"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/futurama_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/futurama_01"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_wellcome"
+            android:layout_width="222dp"
+            android:layout_height="72dp"
+            android:text="Welcome to \n The Futurama App"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/futurama_img" />
+
+        <ImageView
+            android:id="@+id/icon_biometric"
+            android:layout_width="36dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/fingerprint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_wellcome" />
+
+        <ImageView
+            android:id="@+id/icon_gmail"
+            android:layout_width="36dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/google"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.098"
+            app:layout_constraintStart_toEndOf="@+id/icon_biometric"
+            app:layout_constraintTop_toBottomOf="@+id/text_wellcome" />
+
+
+        <ImageView
+            android:id="@+id/icon_cop"
+            android:layout_width="20dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="84dp"
+            android:src="@drawable/copyright"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/icon_biometric" />
+
+        <TextView
+            android:id="@+id/text_description_dev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ana Gomes Android Developer 2023"
+            android:textColor="#9AFBDE"
+            android:textSize="10sp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/icon_cop"
+            app:layout_constraintTop_toBottomOf="@+id/icon_gmail"
+            app:layout_constraintVertical_bias="0.930" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
