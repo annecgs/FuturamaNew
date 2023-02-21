@@ -3,20 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/navigation_home"
-        android:actionLayout="@layout/item_home"
-        tools:ignore="MenuTitle" />
+    <group>
+        <item
+            android:id="@+id/navigation_home"
+            android:actionLayout="@layout/item_home"
+            android:enabled="true"
+            tools:ignore="MenuTitle" />
+    </group>
 
-    <item
-        android:id="@+id/navigation_favorite"
-        android:actionLayout="@layout/item_favorite"
-        tools:ignore="MenuTitle" />
+    <group>
+        <item
+            android:id="@+id/navigation_dashboard"
+            android:actionLayout="@layout/item_favorite"
+            android:enabled="true"
+            tools:ignore="MenuTitle"
+            />
+    </group>
 
-    <item
-        android:id="@+id/navigation_logout"
-        android:actionLayout="@layout/item_logout"
-        tools:ignore="MenuTitle" />
+    <group>
+        <item
+            android:id="@+id/navigation_notifications"
+            android:actionLayout="@layout/item_logout"
+            android:enabled="true"
+            tools:ignore="MenuTitle" />
+
+    </group>
+
 
     <!--item
         android:id="@+id/navigation_dashboard"
