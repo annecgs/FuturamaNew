@@ -15,11 +15,6 @@ import java.lang.Exception
 
 class HomeViewModel(private val icharactersRepository: ICharactersRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Rio de Janeiro \n 18 de fevereiro de 2023 15:06"
-    }
-    val text: LiveData<String> = _text
-
     private val _charactersItem = MutableLiveData<FuturamaApiResult<List<FuturamaCharactersItem>>>()
     val characterItem: LiveData<FuturamaApiResult<List<FuturamaCharactersItem>>> = _charactersItem
 
@@ -31,7 +26,7 @@ class HomeViewModel(private val icharactersRepository: ICharactersRepository) : 
             try {
                 if (charactersFromApi.isNullOrEmpty()) {
                     charactersFromApi = withContext(Dispatchers.IO) {
-                        icharactersRepository.getCharacters()
+                        icharactersRepository.getCharacter()
                     }
                 }
                 //_pokemonSelected.value = pokemonsFromApi.find { it.id == pokemonId }
@@ -43,22 +38,21 @@ class HomeViewModel(private val icharactersRepository: ICharactersRepository) : 
         }
     }
 
-    fun getCoinsFromRetrofit() {
+    fun getCharactersFromRetrofit() {
         viewModelScope.launch {
             _charactersItem.value = FuturamaApiResult.Loading()
             try {
                 if (charactersFromApi.isNullOrEmpty()) {
                     charactersFromApi = withContext(Dispatchers.IO) {
-                        icharactersRepository.getCharacters()
+                        icharactersRepository.getCharacter()
                     }
                 }
                 _charactersItem.value = FuturamaApiResult.Success(charactersFromApi)
             } catch (e: Exception) {
                 val characterResult = FuturamaApiResult.Error<List<FuturamaCharactersItem>>(e)
-                Log.d("PokemonResult", "PokemonCoin: $characterResult")
+                Log.d("FuturamaResult", "Result: ${characterResult.throwable.message}")
                 _charactersItem.value = characterResult
             }
         }
     }
-
 }

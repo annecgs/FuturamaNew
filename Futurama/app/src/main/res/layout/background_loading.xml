@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:alpha="0.80">
+
+    <TextView
+        android:id="@+id/text_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Loading Characters..."
+        android:textAlignment="center"
+        android:textColor="#BEBEBE"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/circularDotsLoader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+        android:id="@+id/circularDotsLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="190dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:loader_animDur="100"
+        app:loader_bigCircleRadius="60dp"
+        app:loader_circleRadius="14dp"
+        app:loader_defaultColor="#BEBEBE"
+        app:loader_firstShadowColor="#BEBEBE"
+        app:loader_secondShadowColor="#BEBEBE"
+        app:loader_selectedColor="@color/white"
+        app:loader_showRunningShadow="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

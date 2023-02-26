@@ -1,9 +1,10 @@
 package com.example.futurama.data.dto
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+
 
 data class Images(
-    @SerializedName("head-shot")
-    val headshot: String,
-    val main: String
+    @SerialName("head-shot")
+    val headshot: String?,
+    val main: String?
 )

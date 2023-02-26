@@ -6,26 +6,25 @@
     <group>
         <item
             android:id="@+id/navigation_home"
-            android:actionLayout="@layout/item_home"
-            android:enabled="true"
-            tools:ignore="MenuTitle" />
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home"
+            />
     </group>
 
     <group>
         <item
             android:id="@+id/navigation_dashboard"
-            android:actionLayout="@layout/item_favorite"
-            android:enabled="true"
-            tools:ignore="MenuTitle"
+            android:icon="@drawable/favorito_on"
+            android:title="Favorites"
             />
     </group>
 
     <group>
         <item
             android:id="@+id/navigation_notifications"
-            android:actionLayout="@layout/item_logout"
-            android:enabled="true"
-            tools:ignore="MenuTitle" />
+            android:icon="@drawable/power"
+            android:title="Logout"
+             />
 
     </group>
 

@@ -1,6 +1,7 @@
 package com.example.futurama.ui.notifications
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,11 +29,27 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
+        /*val textView: TextView = binding.textNotifications
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
+
+        logout()
+
         return root
+    }
+
+    private fun logout(){
+        object : CountDownTimer(10000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.textNotifications.text = "Finishing on: " + millisUntilFinished / 1000 + " Seconds"
+            }
+
+            override fun onFinish() {
+                //binding.textNotifications.text = "done!"
+                activity?.finish()
+            }
+        }.start()
     }
 
     override fun onDestroyView() {
