@@ -34,7 +34,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_bias="1.0"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,21 +44,22 @@
                 android:layout_marginEnd="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.45"
                 app:layout_constraintStart_toEndOf="@+id/image_item"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
 
 
                 <TextView
                     android:id="@+id/name_item"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:text="Name character"
                     android:textColor="#E4E2E2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                 <TextView
                     android:id="@+id/gender_item"
@@ -111,18 +112,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/home_planet_item" />
 
                 <ImageView
+                    android:id="@+id/imageView"
                     android:layout_width="22dp"
                     android:layout_height="23dp"
                     android:layout_marginTop="4dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="4dp"
                     android:src="@drawable/favorito_off"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ocupation_item"
-                    app:layout_constraintVertical_bias="0.428" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
