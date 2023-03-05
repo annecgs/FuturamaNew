@@ -97,4 +97,7 @@ dependencies {
     //Biometric
     implementation "androidx.biometric:biometric-ktx:1.2.0-alpha04"
 
+    //Searchable-Spinner
+    implementation 'com.github.zeeshan5422:Searchable-Spinner-Kotlin:v1.0'
+
 }

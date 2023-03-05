@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,13 +17,13 @@ import com.example.futurama.databinding.FragmentHomeBinding
 import com.example.futurama.errorHandling.ErrorHandlingFragment
 import com.example.futurama.errorHandling.ErrorHandlingViewModel
 import com.example.futurama.ui.adapter.AdapterFuturama
+import com.example.futurama.utils.ConfigSearchView
 import com.example.futurama.utils.ConfigViewModel
 
 class HomeFragment : Fragment() {
-
+    private var list : List<FuturamaCharactersItem> = ArrayList()
     private var _binding: FragmentHomeBinding? = null
     private lateinit var adapterHome: AdapterFuturama
-
     private val viewModel: HomeViewModel by activityViewModels() { ConfigViewModel.getFuturamaViewModelFactory()}
 
     private val binding get() = _binding!!
@@ -60,6 +61,37 @@ class HomeFragment : Fragment() {
     }
 
 
+    private fun setupSearchView(list: List<FuturamaCharactersItem>) {
+        var newList: MutableList<FuturamaCharactersItem> = ArrayList()
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                binding.searchView.clearFocus()
+                newList = ConfigSearchView.FilterListQuery(query, list)
+                setlistQueryAdapter(newList)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newList = ConfigSearchView.FilterListQuery(newText, list)
+                setlistQueryAdapter(newList)
+                return true
+            }
+        })
+    }
+
+    private fun setlistQueryAdapter(newList: MutableList<FuturamaCharactersItem>) = if (newList.isNotEmpty()) {
+        setListAdapter(newList)
+        binding.listCharacters.visibility = View.VISIBLE
+        //binding.include2.root.visibility = View.VISIBLE
+
+    } else {
+        binding.listCharacters.visibility = View.GONE
+        //binding.widgetListEmpty.visibility = View.VISIBLE
+
+    }
+
+
+
     private fun goToFirstItemInRecyclerView() {
         val linearLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -89,8 +121,9 @@ class HomeFragment : Fragment() {
                 is FuturamaApiResult.Success<*> -> {
                     Log.d("INFO", "Success: ${listCharacters.data}")
                     setListAdapter(listCharacters.data as List<FuturamaCharactersItem>)
+                    setupSearchView(listCharacters.data as List<FuturamaCharactersItem>)
+                    list = listCharacters.data as List<FuturamaCharactersItem>
                     binding.loadingCharacters.root.visibility = View.GONE
-
                 }
                 is FuturamaApiResult.Error<*> -> {
                     var mensagem: ErrorHandlingViewModel = ErrorHandlingViewModel()
